@@ -1,40 +1,66 @@
-export const portfolioInfo = {
-  personal: {
-    name: "Danish Khan",
-    role: "Software Engineer",
-    experience: "5+ years",
-    location: "Your Location",
-    bio: "Experienced software engineer specializing in web development and cloud technologies."
+export const companyInfo = {
+  company: {
+    name: "Online Remote Recruiting (ORR)",
+    location: "Cambridge, Ontario, Canada",
+    description: "A cutting-edge job recruitment company pioneering AI-powered recruitment solutions",
+    specialization: "AI-driven recruitment and talent matching"
   },
-  skills: {
-    frontend: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-    backend: ["Node.js", "Python", "Express", "FastAPI"],
-    cloud: ["AWS", "Docker", "Kubernetes"],
-    databases: ["PostgreSQL", "MongoDB", "Redis"],
-    other: ["Git", "CI/CD", "Agile Methodologies"]
-  },
-  projects: [
-    {
-      name: "Project Alpha",
-      description: "A quantum-entangled web app",
-      technologies: ["React", "Node.js", "PostgreSQL"],
-      highlights: ["Improved performance by 50%", "Served 100k+ users"]
-    },
-    {
-      name: "Project Beta",
-      description: "AI-powered code synthesizer",
-      technologies: ["Python", "TensorFlow", "FastAPI"],
-      highlights: ["Automated code generation", "99% accuracy rate"]
+  platform: {
+    features: [
+      "AI-powered job matching",
+      "Advanced resume analysis",
+      "Multi-platform job search integration",
+      "Comprehensive dashboard systems",
+      "Premium recruitment solutions"
+    ],
+    userTypes: {
+      candidates: [
+        "Profile creation and management",
+        "Job search and tracking",
+        "AI-powered resume scoring",
+        "Application tracking",
+        "Easy apply options"
+      ],
+      recruiters: [
+        "Job posting management",
+        "AI-powered candidate screening",
+        "Talent matching",
+        "Analytics dashboard",
+        "Premium services access"
+      ]
     }
-  ],
+  },
+  keyRoutes: {
+    signup: "/auth/signup",
+    candidateDashboard: "/talent/dashboard/overview"
+  },
+  integrations: ["LinkedIn", "Indeed"],
+  services: {
+    core: [
+      "AI-powered job matching",
+      "Resume analysis",
+      "Application tracking",
+      "Candidate screening"
+    ],
+    premium: [
+      "End-to-end recruitment solutions",
+      "Job posting",
+      "Candidate shortlisting",
+      "Qualified candidate pool generation"
+    ]
+  },
   faqs: [
     {
-      question: "What is your expertise?",
-      answer: "I specialize in full-stack web development with a focus on React, TypeScript, and cloud technologies."
+      question: "How can candidates apply for jobs?",
+      answer: "Candidates can either create a full profile through our signup process or use our easy apply option for direct job applications."
     },
     {
-      question: "Are you available for freelance work?",
-      answer: "Yes, I'm open to interesting freelance opportunities in web development and cloud architecture."
+      question: "What makes ORR different?",
+      answer: "We use advanced AI technology to provide more accurate job matches, going beyond traditional keyword matching to understand the full context of candidates' skills and experience."
+    },
+    {
+      question: "Are premium services available?",
+      answer: "Yes, we offer premium subscription-based services for organizations, providing end-to-end recruitment solutions including AI-powered screening and candidate pool generation."
     }
   ]
 }; 

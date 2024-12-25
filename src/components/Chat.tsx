@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
 import OpenAI from 'openai';
-import { portfolioInfo } from '../lib/knowledge-base';
+import { companyInfo } from '../lib/knowledge-base';
 
 const client = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
@@ -33,7 +33,7 @@ export function Chat() {
         messages: [
           {
             role: 'assistant',
-            content: `You are a helpful assistant on Danish Khan's portfolio website. Here's the information about Danish: ${JSON.stringify(portfolioInfo, null, 2)} Use this information to answer questions accurately.`,
+            content: `You are a helpful assistant for Online Remote Recruiting (ORR). Here's the information about the company: ${JSON.stringify(companyInfo, null, 2)} Use this information to answer questions accurately about ORR's services, platform features, and recruitment solutions.`,
           },
           { role: 'user', content: input },
         ],
