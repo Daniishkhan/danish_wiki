@@ -37,7 +37,7 @@ export function Chat() {
           },
           { role: 'user', content: input },
         ],
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4o-2024-11-20',
       });
 
       const botResponse = completion.choices[0]?.message?.content || "Sorry, I couldn't process that.";
