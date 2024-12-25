@@ -1,8 +1,13 @@
-import { useState } from "react";
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
-import { openai } from "../lib/openai";
-import { portfolioInfo } from "../lib/knowledge-base";
+import { useState } from 'react';
+import { Button } from './ui/button';
+import { Card } from './ui/card';
+import OpenAI from 'openai';
+import { portfolioInfo } from '../lib/knowledge-base';
+
+const client = new OpenAI({
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true
+});
 
 interface Message {
   content: string;
@@ -12,51 +17,37 @@ interface Message {
 export function Chat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { content: "Hello! How can I help you today?", isBot: true }
+    { content: 'Hello! How can I help you today?', isBot: true },
   ]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
-    
+
     setIsLoading(true);
-    // Add user message
-    setMessages(prev => [...prev, { content: input, isBot: false }]);
-    
+    setMessages((prev) => [...prev, { content: input, isBot: false }]);
+
     try {
-      const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+      const completion = await client.chat.completions.create({
         messages: [
           {
-            role: "system",
-            content: `You are a helpful assistant on Danish Khan's portfolio website. 
-            Keep responses concise and friendly. Here's the information about Danish:
-            ${JSON.stringify(portfolioInfo, null, 2)}
-            
-            Use this information to answer questions accurately. If you don't find specific information in the knowledge base, 
-            provide general guidance or ask for clarification. Always maintain a professional and friendly tone.`
+            role: 'assistant',
+            content: `You are a helpful assistant on Danish Khan's portfolio website. Here's the information about Danish: ${JSON.stringify(portfolioInfo, null, 2)} Use this information to answer questions accurately.`,
           },
-          ...messages.map(msg => ({
-            role: msg.isBot ? "assistant" : "user",
-            content: msg.content
-          })),
-          { role: "user", content: input }
+          { role: 'user', content: input },
         ],
-        max_tokens: 150
+        model: 'gpt-3.5-turbo',
       });
 
-      const botResponse = response.choices[0]?.message?.content || "Sorry, I couldn't process that.";
-      setMessages(prev => [...prev, { content: botResponse, isBot: true }]);
+      const botResponse = completion.choices[0]?.message?.content || "Sorry, I couldn't process that.";
+      setMessages((prev) => [...prev, { content: botResponse, isBot: true }]);
     } catch (error) {
       console.error('OpenAI Error:', error);
-      setMessages(prev => [...prev, { 
-        content: "Sorry, I encountered an error. Please try again.", 
-        isBot: true 
-      }]);
+      setMessages((prev) => [...prev, { content: 'Sorry, I encountered an error.', isBot: true }]);
     } finally {
       setIsLoading(false);
-      setInput("");
+      setInput('');
     }
   };
 
@@ -68,13 +59,22 @@ export function Chat() {
             <h3 className="text-[#33ff00]">Chat Assistant</h3>
             <button onClick={() => setIsOpen(false)}>&times;</button>
           </div>
-          
+
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}>
-                <div className={`rounded-lg p-2 max-w-[80%] ${
-                  msg.isBot ? 'bg-[#2a2a2a]' : 'bg-[#33ff00] text-[#0a0a0a]'
-                }`}>
+              <div
+                key={i}
+                className={`flex ${
+                  msg.isBot ? 'justify-start' : 'justify-end'
+                }`}
+              >
+                <div
+                  className={`rounded-lg p-2 max-w-[80%] ${
+                    msg.isBot
+                      ? 'bg-[#2a2a2a]'
+                      : 'bg-[#33ff00] text-[#0a0a0a]'
+                  }`}
+                >
                   {msg.content}
                 </div>
               </div>
@@ -99,7 +99,7 @@ export function Chat() {
                 placeholder="Type a message..."
                 disabled={isLoading}
               />
-              <Button 
+              <Button
                 onClick={handleSend}
                 className="bg-[#33ff00] text-[#0a0a0a] hover:bg-[#33ff00]/80"
                 disabled={isLoading}

@@ -2,6 +2,7 @@ import { Button } from "./components/ui/button"
 import { Card } from "./components/ui/card"
 import { Chat } from "./components/Chat"
 
+
 export default function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#33ff00] font-mono">
@@ -31,7 +32,7 @@ export default function App() {
               className="rounded-full pixelated"
             />
           </div>
-          <h1 className="text-4xl font-bold mb-4 glow">Hello, I'm Jane</h1>
+          <h1 className="text-4xl font-bold mb-4 glow">Hello, I'm Danish</h1>
           <p className="text-xl mb-6">A software engineer crafting digital wonders since 1337</p>
           <Button className="bg-[#ff00ff] hover:bg-[#ff00ff]/80 text-[#0a0a0a]">Initialize Contact Sequence</Button>
         </div>
