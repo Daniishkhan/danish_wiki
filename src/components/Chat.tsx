@@ -43,8 +43,8 @@ export function Chat() {
                 
                 ${knowledgeBase}
                 
-                Use this information to answer questions accurately about ORR's services, platform features, and recruitment solutions. 
-                Keep responses concise and friendly. If you're not sure about something, say so rather than making assumptions.`,
+                Use this information to answer questions accurately about ORR. 
+                Keep responses concise and friendly. If you're not sure about something, say so rather than making assumptions or ask them to contact ORR at info@onlineremoterecruit.com`,
               },
           { role: 'user', content: input },
         ],
