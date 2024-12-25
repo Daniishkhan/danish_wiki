@@ -1,5 +1,6 @@
 import { Button } from "./components/ui/button"
 import { Card } from "./components/ui/card"
+import { Chat } from "./components/Chat"
 
 export default function App() {
   return (
@@ -99,6 +100,8 @@ export default function App() {
           <p>&copy; 2023 Jane Doe. All rights reserved. Powered by caffeine and cosmic radiation.</p>
         </div>
       </footer>
+
+      <Chat />
     </div>
   )
 }
