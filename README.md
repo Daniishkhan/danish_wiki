@@ -1,50 +1,73 @@
-# React + TypeScript + Vite
+# ORR AI Chat Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript + Vite project powered by Bun, featuring an AI-powered chat assistant for Online Remote Recruiting (ORR).
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 18
+- TypeScript
+- Vite
+- Bun (Package Manager & Runtime)
+- OpenAI API
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Make sure you have Bun installed on your system. If not, install it by running:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+curl -fsSL https://bun.sh/install | bash
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+1. Clone the repository
+2. Install dependencies:
+```bash
+bun install
 ```
+
+### Development
+
+Run the development server:
+```bash
+bun dev
+```
+
+### Build
+
+Create a production build:
+```bash
+bun run build
+```
+
+### Environment Variables
+
+Create a `.env` file in the root directory with:
+```env
+VITE_OPENAI_API_KEY=your_api_key_here
+```
+
+## Features
+
+- AI-powered chat interface
+- Company knowledge base integration
+- Real-time responses using OpenAI's GPT model
+- TypeScript for type safety
+- Fast development with Vite HMR
+
+## Project Structure
+
+```
+src/
+├── components/
+│   └── Chat.tsx
+├── lib/
+│   └── knowledge-base.ts
+└── ...
+```
+
+## License
+
+[MIT](LICENSE)
