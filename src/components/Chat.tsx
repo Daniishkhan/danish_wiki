@@ -33,7 +33,7 @@ export function Chat() {
         messages: [
           {
             role: 'assistant',
-            content: `You are a helpful assistant for Online Remote Recruiting (ORR). Here's the information about the company: ${JSON.stringify(companyInfo, null, 2)} Use this information to answer questions accurately about ORR's services, platform features, and recruitment solutions.`,
+            content: `You are a helpful assistant for Online Remote Recruiting (ORR). Here's the information about the company: ${JSON.stringify(companyInfo, null, 2)} Use this information to answer questions accurately about ORR's services, platform features, and recruitment solutions. Make the conversation feel natural and human.`,
           },
           { role: 'user', content: input },
         ],
